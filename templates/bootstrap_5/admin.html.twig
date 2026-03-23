@@ -1,0 +1,52 @@
+{% extends '@MichaelKaeferAdminUi/base.html.twig' %}
+{% trans_default_domain 'MichaelKaeferAdminUiBundle' %}
+
+{% block body %}
+    <body class="d-flex flex-column min-vh-100">
+        <header class="navbar bg-body-tertiary border-bottom px-3 justify-content-between">
+            <nav class="admin-nav" aria-label="Header left">
+                {{ knp_menu_render('admin_generator_header_left_menu') }}
+            </nav>
+            <nav class="admin-nav" aria-label="Header right">
+                {{ knp_menu_render('admin_generator_header_right_menu') }}
+            </nav>
+        </header>
+
+        <div class="d-flex flex-column flex-md-row flex-grow-1">
+            <nav class="admin-nav admin-sidebar p-3 border-bottom border-end-md" aria-label="Objects">
+                {{ knp_menu_render('admin_generator_objects_menu') }}
+            </nav>
+
+            <main class="admin-main flex-grow-1 p-4">
+                {% block main %}
+                    <header class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-4">
+                        <h1 class="h2 m-0">{% block h1 %}{{ object_name_singular|trans }}{% endblock %}</h1>
+                        <nav class="admin-nav" aria-label="Object">
+                            {% block object_menu %}
+                            {% endblock %}
+                        </nav>
+                    </header>
+
+                    <section class="admin-section">
+                        {% block section %}
+                        {% endblock %}
+                    </section>
+                {% endblock %}
+            </main>
+        </div>
+
+        <footer class="border-top px-3 py-2 text-body-secondary">
+            <nav class="admin-nav" aria-label="Footer">
+                <ul>
+                    <li><small>{{ admin_generator_version() }}</small></li>
+                </ul>
+            </nav>
+        </footer>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+{% endblock %}

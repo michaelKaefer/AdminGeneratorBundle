@@ -1,0 +1,45 @@
+/* Seitenleiste: Rand rechts erst ab md (darunter liegt sie über dem Inhalt) */
+.admin-sidebar {
+    min-width: 12rem;
+}
+@media (min-width: 768px) {
+    .border-end-md {
+        border-right: var(--bs-border-width) solid var(--bs-border-color) !important;
+        border-bottom: 0 !important;
+    }
+}
+.admin-sidebar ul {
+    flex-direction: column;
+}
+
+/* KnpMenu-Ausgabe */
+header .admin-nav a {
+    padding-left: .75rem;
+    padding-right: .75rem;
+}
+.admin-sidebar ul ul li {
+    padding-left: .75rem;
+}
+.admin-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.admin-nav a {
+    display: block;
+    /*padding-left: .75rem;*/
+    text-decoration: none;
+    border-radius: var(--bs-border-radius);
+}
+.admin-nav a:hover,
+.admin-nav a:focus-visible {
+    background-color: var(--bs-secondary-bg);
+}
+.admin-nav .current > a,
+.admin-nav .current_ancestor > a {
+    font-weight: 600;
+    color: var(--bs-primary);
+}

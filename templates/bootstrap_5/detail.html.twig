@@ -1,0 +1,36 @@
+{% extends '@MichaelKaeferAdminUi/admin.html.twig' %}
+{% trans_default_domain 'MichaelKaeferAdminUiBundle' %}
+
+{% block title %}{{ object_name_singular|trans }}{% endblock %}
+
+{% block object_menu %}
+    {{ knp_menu_render(knp_menu_get('admin_generator_object_menu', [], {
+        object: object,
+        current_route: app.request.attributes.get('_route'),
+    })) }}
+{% endblock %}
+
+{% block section %}
+    {% macro renderTable(data) %}
+        <table class="table table-hover align-middle">
+            <tbody>
+                {% for key, value in data %}
+                    <tr>
+                        <th scope="row" class="w-25">{{ key }}</th>
+                        <td>
+                            {% if value is iterable %}
+                                {{ _self.renderTable(value) }}
+                            {% else %}
+                                {{ value }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endmacro %}
+
+    <div class="table-responsive">
+        {{ _self.renderTable(detail) }}
+    </div>
+{% endblock %}

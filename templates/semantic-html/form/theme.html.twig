@@ -1,0 +1,24 @@
+{% use 'form_div_layout.html.twig' %}
+
+{% block collection_widget %}
+    {{ parent() }}
+
+    {% if form.vars.allow_add %}
+        <button type="button" class="js-collection-type-add-item">Add item</button>
+    {% endif %}
+{% endblock %}
+
+{% block polymorphic_collection_widget %}
+    {% if form.vars.allow_add %}
+        {% if prototypes is defined %}
+            {%- for name, prototype in prototypes -%}
+                <button
+                        type="button"
+                        class="js-polymorphic-collection-type-add-item"
+                        data-type="{{ name }}"
+                >{{ ('polymorphic_collection.add_' ~ name)|trans({}, 'MichaelKaeferAdminUiBundle') }}</button>
+            {%- endfor -%}
+        {% endif %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}

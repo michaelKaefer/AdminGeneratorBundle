@@ -1,0 +1,23 @@
+{% extends '@MichaelKaeferAdminUi/base.html.twig' %}
+
+{% block title %}{{ object_name_singular|trans }}{% endblock %}
+
+{% block object_menu %}
+    {{ knp_menu_render(knp_menu_get('admin_generator_object_menu', [], {
+        object: class,
+        current_route: app.request.attributes.get('_route'),
+    })) }}
+{% endblock %}
+
+{% block section %}
+    {{ table(table) }}
+{#    {% if "1" === app.request.query.get('choice') %}#}
+{#        <form#}
+{#                id="admin-generator-table-choice-form"#}
+{#                method="post"#}
+{#                action="/entities/select"#}
+{#        >#}
+{#            <button type="submit">Auswählen</button>#}
+{#        </form>#}
+{#    {% endif %}#}
+{% endblock %}

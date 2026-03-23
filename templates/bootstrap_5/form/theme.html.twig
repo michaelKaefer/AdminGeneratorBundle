@@ -1,0 +1,29 @@
+{% use 'bootstrap_5_layout.html.twig' %}
+
+{%- block delete_widget -%}
+    {%- set attr = attr|merge({class: (attr.class|default('btn btn-outline-danger btn-sm'))|trim}) -%}
+    {{- block('button_widget') -}}
+{%- endblock delete_widget %}
+
+{% block collection_widget %}
+    {{ parent() }}
+
+    {% if form.vars.allow_add %}
+        <button type="button" class="btn btn-outline-primary btn-sm js-collection-type-add-item"><i class="bi bi-plus-lg" aria-hidden="true"></i> Add item</button>
+    {% endif %}
+{% endblock %}
+
+{% block polymorphic_collection_widget %}
+    {% if form.vars.allow_add %}
+        {% if prototypes is defined %}
+            {%- for name, prototype in prototypes -%}
+                <button
+                        type="button"
+                        class="btn btn-outline-primary btn-sm js-polymorphic-collection-type-add-item"
+                        data-type="{{ name }}"
+                ><i class="bi bi-plus-lg" aria-hidden="true"></i> {{ ('polymorphic_collection.add_' ~ name)|trans({}, 'MichaelKaeferAdminUiBundle') }}</button>
+            {%- endfor -%}
+        {% endif %}
+    {% endif %}
+    {{ parent() }}
+{% endblock %}

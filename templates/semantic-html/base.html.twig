@@ -1,0 +1,63 @@
+{% trans_default_domain 'MichaelKaeferAdminUiBundle' %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Admin</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+
+        {# SortableJS #}
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+        {# TinyMCE #}
+        <script src="https://cdn.jsdelivr.net/npm/tinymce@8/tinymce.min.js"></script>
+
+        <style>
+            {% include '@MichaelKaeferAdminUi/css/reset.css' %}
+            {% include '@MichaelKaeferAdminUi/css/style.css' %}
+            {% include '@MichaelKaeferAdminUi/css/form.css' %}
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                {{ knp_menu_render('admin_generator_header_left_menu') }}
+            </nav>
+            <nav>
+                {{ knp_menu_render('admin_generator_header_right_menu') }}
+            </nav>
+        </header>
+
+        <div>
+            <nav>
+                {{ knp_menu_render('admin_generator_objects_menu') }}
+            </nav>
+
+            <main>
+                {% block main %}
+                    <header>
+                        <h1>{% block h1 %}{{ object_name_singular|trans }}{% endblock %}</h1>
+                        <nav>
+                            {% block object_menu %}
+                            {% endblock %}
+                        </nav>
+                    </header>
+
+                    <section>
+                        {% block section %}
+                        {% endblock %}
+                    </section>
+                {% endblock %}
+            </main>
+        </div>
+
+        <footer>
+            <nav>
+                <ul>
+                    <li><small>{{ admin_generator_version() }}</small></li>
+                </ul>
+            </nav>
+        </footer>
+    </body>
+</html>

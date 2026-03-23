@@ -1,0 +1,18 @@
+{% extends '@MichaelKaeferAdminUi/base.html.twig' %}
+
+{% block title %}{{ object_name_singular|trans }}{% endblock %}
+
+{% block object_menu %}
+    {{ knp_menu_render(knp_menu_get('admin_generator_object_menu', [], {
+        object: object is defined ? object : class,
+        current_route: app.request.attributes.get('_route'),
+    })) }}
+{% endblock %}
+
+{% block section %}
+    {{ form(form) }}
+
+    <script>
+        {% include '@MichaelKaeferAdminUi/js/form.js' %}
+    </script>
+{% endblock %}

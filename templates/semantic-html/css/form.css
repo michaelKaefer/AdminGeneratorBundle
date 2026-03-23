@@ -1,0 +1,60 @@
+form {
+    max-width: 600px;
+}
+
+input,
+select,
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: .5rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    background-color: unset;
+    color: -webkit-link;
+    border: solid .1rem -webkit-link;
+    border-radius: 2px;
+    margin: 0 .25rem;
+}
+button:hover {
+    cursor: pointer;
+}
+button.delete {
+    color: red;
+    border-color: red;
+}
+
+label {
+    display: block;
+    margin-bottom: .25rem;
+}
+
+form .help-text {
+    color: #888;
+    font-size: 0.85em;
+    margin-top: 0.25rem;
+}
+
+form [data-form-type] {
+    margin-bottom: 1.75rem;
+}
+form [data-form-type] > ul {
+    color: red;
+}
+form [data-form-type] [data-form-type] {
+    margin-bottom: .5rem;
+}
+
+form [data-form-type="collection"] [data-form-type="data_class"],
+form [data-form-type="polymorphic_collection"] [data-form-type="data_class"] {
+    border: solid .1rem #ccc;
+    border-radius: 2px;
+    padding: .5rem;
+}
+form [data-form-type="collection"] > label,
+form [data-form-type="polymorphic_collection"] > label {
+    display: inline;
+}

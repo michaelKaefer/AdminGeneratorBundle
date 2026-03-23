@@ -1,0 +1,41 @@
+{
+    "name": "michaelkaefer/admin-ui-bundle",
+    "description": "Creates an admin UI for entities.",
+    "license": "MIT",
+    "type": "symfony-bundle",
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../table-bundle"
+        },
+        {
+            "type": "path",
+            "url": "../table"
+        }
+    ],
+    "authors": [
+        {
+            "name": "Project Contributors",
+            "homepage": "https://github.com/michaelKaefer/AdminUiBundle/graphs/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=8.4",
+        "doctrine/persistence": "^4.1",
+        "michaelkaefer/table-bundle": "0.x-dev",
+        "twig/string-extra": "^3.23",
+        "knplabs/knp-menu-bundle": "^3.7",
+        "league/flysystem-bundle": "^3.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "MichaelKaefer\\AdminUiBundle\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MichaelKaefer\\AdminUiBundle\\Tests\\": "tests"
+        }
+    }
+}

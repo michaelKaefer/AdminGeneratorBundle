@@ -1,0 +1,60 @@
+nav > ul {
+    display: flex;
+    padding-inline-start: 1rem;
+}
+
+table {
+    border-collapse: collapse;
+}
+table nav > ul {
+    display: block;
+}
+td, th {
+    padding: 8px;
+}
+td {
+    border: 1px solid;
+}
+tbody tr:nth-child(even){background-color: #f2f2f2;}
+tbody tr:hover {background-color: #ddd;}
+
+body {
+    font-family: monospace;
+}
+body > header {
+    border-bottom: #0a0a0a 1px solid;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+body > header > nav > ul {
+    display: flex;
+    gap: 1.5rem;
+}
+body > div {
+    display: flex;
+    padding: 0 1rem;
+}
+body > div > nav {
+    border-right: #0a0a0a 1px solid;
+    padding-right: 1.5rem;
+}
+body > div > nav > ul {
+    display: block;
+}
+body > div > main {
+    width: 100%;
+}
+body > div > main > header {
+    padding: 1rem;
+}
+body > div > main > section {
+    padding: 1rem;
+}
+body > div > main > section > * {
+    width: 100%;
+}
+body > footer {
+    border-top: #0a0a0a 1px solid;
+    padding: 0 1rem;
+}

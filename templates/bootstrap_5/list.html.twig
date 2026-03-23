@@ -1,0 +1,17 @@
+{% extends '@MichaelKaeferAdminUi/admin.html.twig' %}
+{% trans_default_domain 'MichaelKaeferAdminUiBundle' %}
+
+{% block title %}{{ object_name_singular|trans }}{% endblock %}
+
+{% block object_menu %}
+    {{ knp_menu_render(knp_menu_get('admin_generator_object_menu', [], {
+        object: class,
+        current_route: app.request.attributes.get('_route'),
+    })) }}
+{% endblock %}
+
+{% block section %}
+    <div class="table-responsive">
+        {{ table(table) }}
+    </div>
+{% endblock %}
