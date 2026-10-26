@@ -3,6 +3,11 @@
 
 {% block title %}{{ object_name_singular|trans }}{% endblock %}
 
+{% block head %}
+    {{ parent() }}
+    {{ knp_pagination_rel_links(pagination) }}
+{% endblock %}
+
 {% block object_menu %}
     {{ knp_menu_render(knp_menu_get('admin_generator_object_menu', [], {
         object: class,
@@ -11,7 +16,9 @@
 {% endblock %}
 
 {% block section %}
+    <div class="mb-3"><small>{{ pagination.getTotalItemCount }} Treffer</small></div>
     <div class="table-responsive">
         {{ table(table) }}
     </div>
+    {{ knp_pagination_render(pagination, '@KnpPaginator/Pagination/bootstrap_v5_pagination.html.twig') }}
 {% endblock %}

@@ -21,6 +21,7 @@ final class ListController extends AbstractController
         private readonly TranslationIdGenerator $translationIdGenerator,
         private readonly TableFactory $tableFactory,
         private readonly TableViewFactory $tableViewFactory,
+        private readonly \Knp\Component\Pager\PaginatorInterface $paginator,
     ) {
     }
 
@@ -36,11 +37,17 @@ final class ListController extends AbstractController
         $repository = $this->managerRegistry->getManagerForClass($class)
             ->getRepository($class);
 
-        $queryBuilder = $repository->createQueryBuilder('o');
+        $query = $repository->createQueryBuilder('o')->getQuery();
+
+        $pagination = $this->paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            10,
+        );
 
         $table = $this->tableViewFactory->create(
             $this->tableFactory->create($class),
-            $queryBuilder->getQuery()->toIterable(),
+            $query->toIterable(),
         );
 
         return $this->render('@MichaelKaeferAdminUi/list.html.twig', [
@@ -48,6 +55,7 @@ final class ListController extends AbstractController
             'object_name_singular' => $this->translationIdGenerator->generate($class, true),
             'list' => $repository->findAll(),
             'table' => $table,
+            'pagination' => $pagination,
         ]);
     }
 }

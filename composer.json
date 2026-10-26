@@ -26,7 +26,8 @@
         "michaelkaefer/table-bundle": "0.x-dev",
         "twig/string-extra": "^3.23",
         "knplabs/knp-menu-bundle": "^3.7",
-        "league/flysystem-bundle": "^3.7"
+        "league/flysystem-bundle": "^3.7",
+        "knplabs/knp-paginator-bundle": "^6.11"
     },
     "autoload": {
         "psr-4": {

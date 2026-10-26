@@ -5,7 +5,6 @@ namespace MichaelKaefer\AdminUiBundle\Controller;
 use Doctrine\Persistence\ManagerRegistry;
 use MichaelKaefer\AdminUiBundle\ArgumentResolver\ObjectResolver;
 use MichaelKaefer\AdminUiBundle\Attribute\SingleInstance;
-use MichaelKaefer\AdminUiBundle\Object\PathGeneratorInterface;
 use MichaelKaefer\AdminUiBundle\Object\RouteParametersGenerator;
 use MichaelKaefer\AdminUiBundle\Object\TranslationIdGenerator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,7 +18,6 @@ final class EditController extends AbstractController
 {
     public function __construct(
         private readonly ManagerRegistry $managerRegistry,
-        private readonly PathGeneratorInterface $pathGenerator,
         private readonly TranslationIdGenerator $translationIdGenerator,
         private readonly RouteParametersGenerator $routeParametersGenerator,
     ) {
