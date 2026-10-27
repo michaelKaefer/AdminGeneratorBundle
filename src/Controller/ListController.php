@@ -3,9 +3,10 @@
 namespace MichaelKaefer\AdminUiBundle\Controller;
 
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
 use MichaelKaefer\AdminUiBundle\ArgumentResolver\ObjectResolver;
 use MichaelKaefer\AdminUiBundle\Attribute\SingleInstance;
-use MichaelKaefer\AdminUiBundle\Object\TranslationIdGenerator;
+use MichaelKaefer\AdminUiBundle\Object\Translator;
 use MichaelKaefer\Table\TableFactory;
 use MichaelKaefer\Table\TableViewFactory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,10 +19,10 @@ final class ListController extends AbstractController
 {
     public function __construct(
         private readonly ManagerRegistry $managerRegistry,
-        private readonly TranslationIdGenerator $translationIdGenerator,
+        private readonly Translator $translator,
         private readonly TableFactory $tableFactory,
         private readonly TableViewFactory $tableViewFactory,
-        private readonly \Knp\Component\Pager\PaginatorInterface $paginator,
+        private readonly PaginatorInterface $paginator,
     ) {
     }
 
@@ -52,7 +53,7 @@ final class ListController extends AbstractController
 
         return $this->render('@MichaelKaeferAdminUi/list.html.twig', [
             'class' => $class,
-            'object_name_singular' => $this->translationIdGenerator->generate($class, true),
+            'object_name_singular' => $this->translator->transClass($class, true),
             'list' => $repository->findAll(),
             'table' => $table,
             'pagination' => $pagination,

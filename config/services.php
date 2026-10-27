@@ -34,7 +34,7 @@ use MichaelKaefer\AdminUiBundle\Object\Provider\DoctrineOrmProvider;
 use MichaelKaefer\AdminUiBundle\Object\ProviderInterface;
 use MichaelKaefer\AdminUiBundle\Object\RouteParametersGenerator;
 use MichaelKaefer\AdminUiBundle\Object\SingleInstanceProvider;
-use MichaelKaefer\AdminUiBundle\Object\TranslationIdGenerator;
+use MichaelKaefer\AdminUiBundle\Object\Translator;
 use MichaelKaefer\AdminUiBundle\Table;
 use MichaelKaefer\AdminUiBundle\Twig\VersionExtension;
 
@@ -69,8 +69,6 @@ return static function (ContainerConfigurator $container) {
         ->set(Table\TableType\ObjectExtension::class)
             ->autowire()
             ->tag('table.table_type_extension')
-
-        ->set(TranslationIdGenerator::class)
 
         ->set(ObjectResolver::class)
             ->autowire()
@@ -217,6 +215,10 @@ return static function (ContainerConfigurator $container) {
             ->autowire()
 
         ->set(ObjectUrlGenerator::class)
+            ->private()
+            ->autowire()
+
+        ->set(Translator::class)
             ->private()
             ->autowire()
     ;

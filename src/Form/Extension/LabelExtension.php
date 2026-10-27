@@ -3,16 +3,15 @@
 namespace MichaelKaefer\AdminUiBundle\Form\Extension;
 
 use MichaelKaefer\AdminUiBundle\Object\ProviderInterface;
-use MichaelKaefer\AdminUiBundle\Object\TranslationIdGenerator;
+use MichaelKaefer\AdminUiBundle\Object\Translator;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Translation\TranslatableMessage;
 
 class LabelExtension extends AbstractTypeExtension
 {
-    public function __construct(private readonly TranslationIdGenerator $translationIdGenerator, private readonly ProviderInterface $objectProvider)
+    public function __construct(private readonly Translator $translator, private readonly ProviderInterface $objectProvider)
     {
     }
 
@@ -31,21 +30,13 @@ class LabelExtension extends AbstractTypeExtension
             if ($options['data_class'] ?? null) {
                 foreach ($this->objectProvider->provide() as $class) {
                     if ($class === $options['data_class']) {
-                        return new TranslatableMessage(
-                            $this->translationIdGenerator->generate($options['data_class'], true),
-                            [],
-                            'MichaelKaeferAdminUiBundle',
-                        );
+                        return $this->translator->transClass($options['data_class'], true);
                     }
                 }
             } elseif ($options['class'] ?? null) {
                 foreach ($this->objectProvider->provide() as $class) {
                     if ($class === $options['class']) {
-                        return new TranslatableMessage(
-                            $this->translationIdGenerator->generate($options['class'], true),
-                            [],
-                            'MichaelKaeferAdminUiBundle',
-                        );
+                        return $this->translator->transClass($options['class'], true);
                     }
                 }
             } elseif ($options['entry_type'] ?? null) {

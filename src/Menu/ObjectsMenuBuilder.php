@@ -9,7 +9,7 @@ use MichaelKaefer\AdminUiBundle\Attribute\SingleInstance;
 use MichaelKaefer\AdminUiBundle\Event\ConfigureMenuEvent;
 use MichaelKaefer\AdminUiBundle\Object\MenuItemFactory;
 use MichaelKaefer\AdminUiBundle\Object\ProviderInterface;
-use MichaelKaefer\AdminUiBundle\Object\TranslationIdGenerator;
+use MichaelKaefer\AdminUiBundle\Object\Translator;
 use Symfony\Contracts\EventDispatcher\EventDispatcherInterface;
 
 final readonly class ObjectsMenuBuilder
@@ -18,7 +18,7 @@ final readonly class ObjectsMenuBuilder
         private array $order,
         private FactoryInterface $factory,
         private ProviderInterface $objectProvider,
-        private TranslationIdGenerator $translationIdGenerator,
+        private readonly Translator $translator,
         private MenuItemFactory $menuItemFactory,
         private EventDispatcherInterface $eventDispatcher,
     ) {
@@ -49,7 +49,7 @@ final readonly class ObjectsMenuBuilder
                     }
 
                     $menuItem = $this->menuItemFactory->create(
-                        $this->translationIdGenerator->generate($class, true),
+                        $this->translator->transClass($class, true, true),
                         $reflector->getAttributes(SingleInstance::class, \ReflectionAttribute::IS_INSTANCEOF)
                             ? 'admin_generator_edit'
                             : 'admin_generator_list',

@@ -6,7 +6,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use MichaelKaefer\AdminUiBundle\ArgumentResolver\ObjectResolver;
 use MichaelKaefer\AdminUiBundle\Attribute\SingleInstance;
 use MichaelKaefer\AdminUiBundle\Object\RouteParametersGenerator;
-use MichaelKaefer\AdminUiBundle\Object\TranslationIdGenerator;
+use MichaelKaefer\AdminUiBundle\Object\Translator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,7 +18,7 @@ final class EditController extends AbstractController
 {
     public function __construct(
         private readonly ManagerRegistry $managerRegistry,
-        private readonly TranslationIdGenerator $translationIdGenerator,
+        private readonly Translator $translator,
         private readonly RouteParametersGenerator $routeParametersGenerator,
     ) {
     }
@@ -70,7 +70,7 @@ final class EditController extends AbstractController
 
         return $this->render('@MichaelKaeferAdminUi/form.html.twig', [
             'class' => $class,
-            'object_name_singular' => $this->translationIdGenerator->generate($class, true),
+            'object_name_singular' => $this->translator->transClass($class, true),
             'form' => $form,
             'object' => $object,
         ]);

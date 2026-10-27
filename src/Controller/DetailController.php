@@ -4,7 +4,7 @@ namespace MichaelKaefer\AdminUiBundle\Controller;
 
 use Doctrine\Persistence\ManagerRegistry;
 use MichaelKaefer\AdminUiBundle\ArgumentResolver\ObjectResolver;
-use MichaelKaefer\AdminUiBundle\Object\TranslationIdGenerator;
+use MichaelKaefer\AdminUiBundle\Object\Translator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +18,7 @@ final class DetailController extends AbstractController
     public function __construct(
         private readonly SerializerInterface $serializer,
         private readonly ManagerRegistry $managerRegistry,
-        private readonly TranslationIdGenerator $translationIdGenerator,
+        private readonly Translator $translator,
     ) {
     }
 
@@ -32,7 +32,7 @@ final class DetailController extends AbstractController
 
         return $this->render('@MichaelKaeferAdminUi/detail.html.twig', [
             'class' => $class,
-            'object_name_singular' => $this->translationIdGenerator->generate($class, true),
+            'object_name_singular' => $this->translator->transClass($class, true),
             'object' => $object = $repository->find($request->query->all('identifierValues')),
             'detail' => $this->serializer->normalize($object, null, [
                 AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function (object $object, ?string $format, array $context): string {
