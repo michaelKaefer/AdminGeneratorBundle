@@ -10,14 +10,12 @@ use MichaelKaefer\AdminUiBundle\Controller\EditController;
 use MichaelKaefer\AdminUiBundle\Controller\ListController;
 use MichaelKaefer\AdminUiBundle\Controller\MediaController;
 use MichaelKaefer\AdminUiBundle\Form\AsFormTypeTypeGuesser;
-use MichaelKaefer\AdminUiBundle\Form\DataClassOptionsGenerator;
 use MichaelKaefer\AdminUiBundle\Form\Extension\AddGlobalEntryOptionsInPolymorphicCollectionsExtension;
 use MichaelKaefer\AdminUiBundle\Form\Extension\AddHtmlDataAttributeContainingTheFormTypeExtension;
 use MichaelKaefer\AdminUiBundle\Form\Extension\FilterEntryTypesInPolymorphicCollectionsExtension;
-use MichaelKaefer\AdminUiBundle\Form\Extension\MediaPreviewExtension;
 use MichaelKaefer\AdminUiBundle\Form\Extension\LabelExtension;
+use MichaelKaefer\AdminUiBundle\Form\Extension\MediaPreviewExtension;
 use MichaelKaefer\AdminUiBundle\Form\Extension\UploadMediaExtension;
-use MichaelKaefer\AdminUiBundle\Form\PolymorphicCollectionOptionsGenerator;
 use MichaelKaefer\AdminUiBundle\Media\Uploader;
 use MichaelKaefer\AdminUiBundle\Menu\HeaderLeftMenuBuilder;
 use MichaelKaefer\AdminUiBundle\Menu\HeaderRightMenuBuilder;
@@ -199,14 +197,6 @@ return static function (ContainerConfigurator $container) {
             ->autowire()
 
         ->set(SingleInstanceProvider::class)
-            ->private()
-            ->autowire()
-
-        ->set(DataClassOptionsGenerator::class)
-            ->private()
-            ->autowire()
-
-        ->set(PolymorphicCollectionOptionsGenerator::class)
             ->private()
             ->autowire()
 
