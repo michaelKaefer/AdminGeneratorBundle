@@ -1,6 +1,7 @@
-/*.admin-section form {*/
-/*    max-width: 600px;*/
-/*}*/
+/* Inside tables remove margin */
+table form .mb-3 {
+    margin-bottom: unset !important;
+}
 
 /* Pflichtfeld-Markierung (Symfony setzt die Klasse "required" am Label) */
 form label.required::after {

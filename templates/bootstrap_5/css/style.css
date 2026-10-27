@@ -1,4 +1,4 @@
-/* Seitenleiste: Rand rechts erst ab md (darunter liegt sie über dem Inhalt) */
+/* Sidebar: Rand rechts erst ab md (darunter liegt sie über dem Inhalt) */
 .admin-sidebar {
     min-width: 12rem;
 }
@@ -12,7 +12,7 @@
     flex-direction: column;
 }
 
-/* KnpMenu-Ausgabe */
+/* Menu */
 header .admin-nav a {
     padding-left: .75rem;
     padding-right: .75rem;
