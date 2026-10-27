@@ -1,19 +1,8 @@
 {
     "name": "michaelkaefer/admin-ui-bundle",
-    "description": "Creates an admin UI for entities.",
+    "description": "Autogenerate an admin web interface for entities",
     "license": "MIT",
     "type": "symfony-bundle",
-    "minimum-stability": "dev",
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../table-bundle"
-        },
-        {
-            "type": "path",
-            "url": "../table"
-        }
-    ],
     "authors": [
         {
             "name": "Project Contributors",

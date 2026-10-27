@@ -36,7 +36,7 @@ final class MichaelKaeferAdminUiBundle extends AbstractBundle
 
     public function prependExtension(ContainerConfigurator $configurator, ContainerBuilder $container): void
     {
-        $theme = 'semantic-html';
+        $theme = 'boostrap_5';
         foreach ($container->getExtensionConfig('michael_kaefer_admin_ui') as $config) {
             $theme = $config['theme'] ?? $theme;
         }
