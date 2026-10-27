@@ -14,7 +14,8 @@ final class MichaelKaeferAdminUiBundle extends AbstractBundle
     {
         $definition->rootNode()
             ->children()
-                ->arrayNode('menu')
+            ->scalarNode('theme')->end()
+            ->arrayNode('menu')
                     ->children()
                         ->arrayNode('admin_generator_objects_menu')
                             ->scalarPrototype()->end()
@@ -33,22 +34,14 @@ final class MichaelKaeferAdminUiBundle extends AbstractBundle
         $configurator->import('../config/services.php');
     }
 
-//    public function prependExtension(ContainerConfigurator $configurator, ContainerBuilder $container): void
-//    {
-//        $container->prependExtensionConfig('michael_kaefer_table', [
-//            'themes' => [
-//                '@MichaelKaeferAdminUi/table/theme.html.twig',
-//                '@MichaelKaeferTable/table.html.twig',
-//            ],
-//        ]);
-//    }
-
     public function prependExtension(ContainerConfigurator $configurator, ContainerBuilder $container): void
     {
-        $path = \dirname(new \ReflectionClass(TableRegistry::class)->getFileName()).'/../templates';
-        $path = '/home/michael/Meine Dateien/admin-generator/admin-ui-bundle/templates/semantic-html';
-        $path = '/home/michael/Meine Dateien/admin-generator/admin-ui-bundle/templates/bootstrap_6';
-        $path = '/home/michael/Meine Dateien/admin-generator/admin-ui-bundle/templates/bootstrap_5';
+        $theme = 'semantic-html';
+        foreach ($container->getExtensionConfig('michael_kaefer_admin_ui') as $config) {
+            $theme = $config['theme'] ?? $theme;
+        }
+
+        $path = \dirname(__DIR__).'/templates/'.$theme;
 
         $container->prependExtensionConfig('twig', ['paths' => [$path => 'MichaelKaeferAdminUi']]);
     }
