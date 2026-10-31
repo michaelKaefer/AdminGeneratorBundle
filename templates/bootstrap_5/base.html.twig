@@ -1,4 +1,4 @@
-{% trans_default_domain 'MichaelKaeferAdminUiBundle' %}
+{% trans_default_domain 'MichaelKaeferAdminGeneratorBundle' %}
 
 <!DOCTYPE html>
 <html lang="{{ app.request is not null ? app.request.locale : 'en' }}">
@@ -36,8 +36,8 @@
             <script src="https://cdn.jsdelivr.net/npm/tinymce@8/tinymce.min.js"></script>
 
             <style>
-                {% include '@MichaelKaeferAdminUi/css/style.css' %}
-                {% include '@MichaelKaeferAdminUi/css/form.css' %}
+                {% include '@MichaelKaeferAdminGenerator/css/style.css' %}
+                {% include '@MichaelKaeferAdminGenerator/css/form.css' %}
             </style>
         </head>
     {% endblock %}

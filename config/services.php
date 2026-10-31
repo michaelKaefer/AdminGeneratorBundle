@@ -2,39 +2,39 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use MichaelKaefer\AdminUiBundle\ArgumentResolver\ObjectResolver;
-use MichaelKaefer\AdminUiBundle\Controller\CreateController;
-use MichaelKaefer\AdminUiBundle\Controller\DeleteController;
-use MichaelKaefer\AdminUiBundle\Controller\DetailController;
-use MichaelKaefer\AdminUiBundle\Controller\EditController;
-use MichaelKaefer\AdminUiBundle\Controller\ListController;
-use MichaelKaefer\AdminUiBundle\Controller\MediaController;
-use MichaelKaefer\AdminUiBundle\Form\AsFormTypeTypeGuesser;
-use MichaelKaefer\AdminUiBundle\Form\Extension\AddGlobalEntryOptionsInPolymorphicCollectionsExtension;
-use MichaelKaefer\AdminUiBundle\Form\Extension\AddHtmlDataAttributeContainingTheFormTypeExtension;
-use MichaelKaefer\AdminUiBundle\Form\Extension\FilterEntryTypesInPolymorphicCollectionsExtension;
-use MichaelKaefer\AdminUiBundle\Form\Extension\LabelExtension;
-use MichaelKaefer\AdminUiBundle\Form\Extension\MediaPreviewExtension;
-use MichaelKaefer\AdminUiBundle\Form\Extension\UploadMediaExtension;
-use MichaelKaefer\AdminUiBundle\Media\Uploader;
-use MichaelKaefer\AdminUiBundle\Menu\HeaderLeftMenuBuilder;
-use MichaelKaefer\AdminUiBundle\Menu\HeaderRightMenuBuilder;
-use MichaelKaefer\AdminUiBundle\Menu\ListItemMenuBuilder;
-use MichaelKaefer\AdminUiBundle\Menu\ObjectMenuBuilder;
-use MichaelKaefer\AdminUiBundle\Menu\ObjectsMenuBuilder;
-use MichaelKaefer\AdminUiBundle\Object\MenuItemFactory;
-use MichaelKaefer\AdminUiBundle\Object\ObjectUrlGenerator;
-use MichaelKaefer\AdminUiBundle\Object\PathGenerator\ChainPathGenerator;
-use MichaelKaefer\AdminUiBundle\Object\PathGenerator\ShortnamePathGenerator;
-use MichaelKaefer\AdminUiBundle\Object\PathGeneratorInterface;
-use MichaelKaefer\AdminUiBundle\Object\Provider\ChainProvider;
-use MichaelKaefer\AdminUiBundle\Object\Provider\DoctrineOrmProvider;
-use MichaelKaefer\AdminUiBundle\Object\ProviderInterface;
-use MichaelKaefer\AdminUiBundle\Object\RouteParametersGenerator;
-use MichaelKaefer\AdminUiBundle\Object\SingleInstanceProvider;
-use MichaelKaefer\AdminUiBundle\Object\Translator;
-use MichaelKaefer\AdminUiBundle\Table;
-use MichaelKaefer\AdminUiBundle\Twig\VersionExtension;
+use MichaelKaefer\AdminGeneratorBundle\ArgumentResolver\ObjectResolver;
+use MichaelKaefer\AdminGeneratorBundle\Controller\CreateController;
+use MichaelKaefer\AdminGeneratorBundle\Controller\DeleteController;
+use MichaelKaefer\AdminGeneratorBundle\Controller\DetailController;
+use MichaelKaefer\AdminGeneratorBundle\Controller\EditController;
+use MichaelKaefer\AdminGeneratorBundle\Controller\ListController;
+use MichaelKaefer\AdminGeneratorBundle\Controller\MediaController;
+use MichaelKaefer\AdminGeneratorBundle\Form\AsFormTypeTypeGuesser;
+use MichaelKaefer\AdminGeneratorBundle\Form\Extension\AddGlobalEntryOptionsInPolymorphicCollectionsExtension;
+use MichaelKaefer\AdminGeneratorBundle\Form\Extension\AddHtmlDataAttributeContainingTheFormTypeExtension;
+use MichaelKaefer\AdminGeneratorBundle\Form\Extension\FilterEntryTypesInPolymorphicCollectionsExtension;
+use MichaelKaefer\AdminGeneratorBundle\Form\Extension\LabelExtension;
+use MichaelKaefer\AdminGeneratorBundle\Form\Extension\MediaPreviewExtension;
+use MichaelKaefer\AdminGeneratorBundle\Form\Extension\UploadMediaExtension;
+use MichaelKaefer\AdminGeneratorBundle\Media\Uploader;
+use MichaelKaefer\AdminGeneratorBundle\Menu\HeaderLeftMenuBuilder;
+use MichaelKaefer\AdminGeneratorBundle\Menu\HeaderRightMenuBuilder;
+use MichaelKaefer\AdminGeneratorBundle\Menu\ListItemMenuBuilder;
+use MichaelKaefer\AdminGeneratorBundle\Menu\ObjectMenuBuilder;
+use MichaelKaefer\AdminGeneratorBundle\Menu\ObjectsMenuBuilder;
+use MichaelKaefer\AdminGeneratorBundle\Object\MenuItemFactory;
+use MichaelKaefer\AdminGeneratorBundle\Object\ObjectUrlGenerator;
+use MichaelKaefer\AdminGeneratorBundle\Object\PathGenerator\ChainPathGenerator;
+use MichaelKaefer\AdminGeneratorBundle\Object\PathGenerator\ShortnamePathGenerator;
+use MichaelKaefer\AdminGeneratorBundle\Object\PathGeneratorInterface;
+use MichaelKaefer\AdminGeneratorBundle\Object\Provider\ChainProvider;
+use MichaelKaefer\AdminGeneratorBundle\Object\Provider\DoctrineOrmProvider;
+use MichaelKaefer\AdminGeneratorBundle\Object\ProviderInterface;
+use MichaelKaefer\AdminGeneratorBundle\Object\RouteParametersGenerator;
+use MichaelKaefer\AdminGeneratorBundle\Object\SingleInstanceProvider;
+use MichaelKaefer\AdminGeneratorBundle\Object\Translator;
+use MichaelKaefer\AdminGeneratorBundle\Table;
+use MichaelKaefer\AdminGeneratorBundle\Twig\VersionExtension;
 
 return static function (ContainerConfigurator $container) {
     $services = $container->services()
@@ -97,7 +97,7 @@ return static function (ContainerConfigurator $container) {
             ->tag('form.type_guesser')
 
         ->set(ObjectsMenuBuilder::class)
-            ->arg(0, param('admin_ui.menu.admin_generator_objects_menu.order'))
+            ->arg(0, param('admin_generator.menu.admin_generator_objects_menu.order'))
             ->autowire()
             ->tag('knp_menu.menu_builder', [
                 'method' => 'build',

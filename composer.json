@@ -1,12 +1,12 @@
 {
-    "name": "michaelkaefer/admin-ui-bundle",
+    "name": "michaelkaefer/admin-generator-bundle",
     "description": "Autogenerate an admin web interface for entities",
     "license": "MIT",
     "type": "symfony-bundle",
     "authors": [
         {
             "name": "Project Contributors",
-            "homepage": "https://github.com/michaelKaefer/AdminUiBundle/graphs/contributors"
+            "homepage": "https://github.com/michaelKaefer/AdminGeneratorBundle/graphs/contributors"
         }
     ],
     "require": {
@@ -20,12 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "MichaelKaefer\\AdminUiBundle\\": "src"
+            "MichaelKaefer\\AdminGeneratorBundle\\": "AdminGeneratorBundle"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MichaelKaefer\\AdminUiBundle\\Tests\\": "tests"
+            "MichaelKaefer\\AdminGeneratorBundle\\Tests\\": "tests"
         }
     }
 }
