@@ -29,7 +29,7 @@ final class MichaelKaeferAdminUiBundle extends AbstractBundle
 
     public function loadExtension(array $config, ContainerConfigurator $configurator, ContainerBuilder $container): void
     {
-        $container->setParameter('admin_ui.menu.admin_generator_objects_menu.order', $config['menu']['admin_generator_objects_menu']);
+        $container->setParameter('admin_ui.menu.admin_generator_objects_menu.order', $config['menu']['admin_generator_objects_menu'] ?? []);
 
         $configurator->import('../config/services.php');
     }

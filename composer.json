@@ -12,7 +12,7 @@
     "require": {
         "php": ">=8.4",
         "doctrine/persistence": "^4.1",
-        "michaelkaefer/table-bundle": "0.x-dev",
+        "michaelkaefer/table-bundle": "^0.1",
         "twig/string-extra": "^3.23",
         "knplabs/knp-menu-bundle": "^3.7",
         "league/flysystem-bundle": "^3.7",
